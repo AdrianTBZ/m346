@@ -1,0 +1,16 @@
+#cloud-config
+users:
+  - name: ubuntu  # Der Name des Benutzers, der erstellt werden soll
+    sudo: ALL=(ALL) NOPASSWD:ALL  # Unbegrenzte sudo-Rechte ohne Passwortabfrage
+    groups: users, admin  # Zugewiesene Gruppen für den Benutzer
+    home: /home/ubuntu  # Home-Verzeichnis des Benutzers
+    shell: /bin/bash  # Standardshell des Benutzers
+    ssh_authorized_keys:  # Liste der autorisierten SSH-Schlüssel für den Benutzer
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDVDIun+crJDTJMV3WWJKUqVj0pF/bouWaCpc6nq/nI4rDdo/lSXiwKgGOkA/kwWxAeliJpLJrVt+M9kjvtEJ/OHYviwqvkY24GkMJCDHHzSItPoHE4Q2lcjp8I/AKIAiEuHsyQR44FnS65GgmHRtsLqajH0ZY7fm2ZXzV1ZJRR60YbC8W1VvkAyiAYSZH0624vI63LZgTCyWEiFR6yqKSemcdFTncI9zjYD/pkQnDIsnZfw4oPIKZtx7C0Mh4hl0vZQ+iPqI87d601+7E7sQFJqHI94cMF3+PWk9wZp4QQmwkWBnYslWy4SIsJceADzLHU1hMx4+vOPml5VgKtsTA7 aws-key
+         # Öffentlicher SSH-Schlüssel
+ssh_pwauth: false  # Deaktiviert Passwort-Authentifizierung für SSH
+disable_root: false  # Aktiviert Root-Login
+package_update: true  # Führt ein Paketlisten-Update aus
+packages:  # Liste der zu installierenden Pakete
+  - curl  # Ein Tool zum Übertragen von Daten über verschiedene Protokolle
+  - wget  # Ein Tool zum Herunterladen von Dateien aus dem Internet
